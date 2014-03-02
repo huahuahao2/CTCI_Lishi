@@ -11,7 +11,7 @@ public class Q1 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		UniqueCharacter unique = new UniqueCharacter("dfsaiyua");
+		UniqueCharacter unique = new UniqueCharacter(args[0]);
 		System.out.println("The string is: " + unique.getString());
 		System.out.println("Unique?: " + unique.determine());
 		System.out.println("Unique?: " + unique.determine_ASCII());
