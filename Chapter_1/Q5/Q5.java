@@ -20,7 +20,7 @@ class Compress {
 	}
 	public char[] compressString() {
 		char[] cs = new char[str.length];
-		for (int i = 0, j = 0, k = 0; i < str.length; i++) {
+		for (int i = 0, j = 0, k = 0; i < str.length; i++) { //O(n) times
 			if (j >= str.length)
 				return str;
 			else
