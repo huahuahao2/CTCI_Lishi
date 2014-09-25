@@ -10,3 +10,5 @@ Sept. 23rd 2014
 Restart the learning process.
 Reconstruct the file.
 Use sublime.
+
+Q1 has a solution as bit vector. Skip it may come back later.

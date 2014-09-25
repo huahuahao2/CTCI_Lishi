@@ -1,4 +1,11 @@
-package Q4;
+//
+//  Chapter_1 Q4.java
+//  CTCI
+//
+//  Modified by Lishi Jiang on 09/23/14.
+//  Copyright (c) 2014 Lishi Jiang. All rights reserved.
+//
+
 
 public class Q4 {
 	public static void main(String[] args) {
@@ -8,6 +15,7 @@ public class Q4 {
 		ReplaceString r_2 = new ReplaceString("dsak dsfa dsfa          ");
 		System.out.println("The original string is: "+ r_2.getString().trim());
 		System.out.println("After the replacement the string is: "+ r_2.replaceWithoutExtraSpace());
+		System.out.println("After the replacement the string is: "+ r_2.replace("dsak dsfa dsfa          ".toCharArray(), 14));
 	}
 	
 }
@@ -24,6 +32,25 @@ class ReplaceString {
 		this.replacee = null;
 		this.replacer = null;
 	}
+	public String replace(char[] s, int length) {
+		int count = 0;
+		for (int i = 0; i < length; i++) {
+			if (s[i] == ' ') {
+				count++;
+			}
+		}
+		int after_length = length+count*2-1;
+		for (int i = length-1; i >= 0; i--) {
+			if (s[i] == ' ') {
+				s[after_length--] = '0';
+				s[after_length--] = '2';
+				s[after_length--] = '%';
+			}
+			else
+				s[after_length--] = s[i];
+		}
+		return new String(s);
+	}
 	public String replaceWithoutExtraSpace() {//but it can only do 'space' to "%20"
 		char[] str = string.toCharArray();
 		int i = str.length, j = str.length-1;
@@ -33,9 +60,9 @@ class ReplaceString {
 		}
 		for(; i >= 0 && j >= 0; i--) {
 			if (str[i] == ' ') {
-				str[j--] = '%';
 				str[j--] = '0';
 				str[j--] = '2';
+				str[j--] = '%';
 			} 
 			else {
 				str[j--] = str[i];

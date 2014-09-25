@@ -6,13 +6,14 @@
 //  Copyright (c) 2014 Lishi Jiang. All rights reserved.
 //
 
-package Q3;
+import java.util.Arrays;
 
 public class Q3_8 {
 	public static void main(String[] args) {
 		Permutation p = new Permutation(args[0], args[1]);
 		System.out.println("These two strings are: "+p.getStr1()+", "+p.getStr2());
 		System.out.println("Are they permutate: "+p.isPermutation());
+		System.out.println("Are they permutate: "+p.isPermutation_sort());
 		System.out.println("Are they rotation: "+p.isRotation());
 	}
 }
@@ -23,6 +24,19 @@ class Permutation {
 	public Permutation(String str1, String str2) {
 		this.str1 = str1;
 		this.str2 = str2;
+	}
+	//even though is O(nlogn) the code is concise.
+	public boolean isPermutation_sort() {
+		char[] s1 = str1.toCharArray();
+		char[] s2 = str2.toCharArray();
+		Arrays.sort(s1);
+		Arrays.sort(s2);
+		for (int i = 0; i < s1.length; i++) {
+			if (s1[i] != s2[i]) {
+				return false;
+			}
+		}
+		return true;
 	}
 	boolean isPermutation() { //it can also be implemented by ASCII
 		if (str1.length() != str2.length())

@@ -1,4 +1,4 @@
-package Q6;
+
 
 public class Q6 {
 	public static void main(String[] args) {//O(n2)
@@ -46,9 +46,10 @@ class Rotate90 {
 	}
 	public void generateMatrix(int size) {
 		int[][] m = new int[size][size];
+		int k =0;
 		for (int i = 0; i < m.length; i++) {
 			for (int j = 0; j < m.length; j++) {
-				m[i][j] = j;
+				m[i][j] = k++;
 			}
 		}
 		this.m = m;
