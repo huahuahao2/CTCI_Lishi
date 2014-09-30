@@ -10,20 +10,22 @@ import java.util.HashSet;
 
 public class Q1 {
 	public static void main(String[] args) {
-		ListNode a = new ListNode('a');
-		ListNode b = new ListNode('b');
+		ListNode a = new ListNode('f');
+		ListNode b = new ListNode('e');
 		a.next = b;
-		ListNode c = new ListNode('c');
+		ListNode c = new ListNode('d');
 		b.next = c;
-		ListNode d = new ListNode('d');
+		ListNode d = new ListNode('c');
 		c.next = d;
-		ListNode e = new ListNode('e');
+		ListNode e = new ListNode('b');
 		d.next = e;
-		ListNode f = new ListNode('f');
+		ListNode f = new ListNode('a');
 		e.next = f;
 		ListNode.printNode(a);
 		LinkedList_Chapter2 x = new LinkedList_Chapter2();
-		System.out.println("\n" + x.kthToTheLast(a,0).val);
+		System.out.println("\n");
+		ListNode.printNode(x.partition(a, 'g'));
+		//System.out.println("\n" + x.partition(a, 'd').val);
 	}
 }
 class ListNode {
@@ -73,5 +75,46 @@ class LinkedList_Chapter2 {
 			list = list.next;
 		}
 		return head;
+	}
+	public ListNode partition(ListNode head, char x) {
+		ListNode first = null, second = null;
+		ListNode firstHead = null, secondHead = null;
+		while(head!=null) {
+			if (head.val < x) {
+				if (first == null ) {
+					first = head;
+					firstHead = first;
+				}
+				else {
+					firstHead.next = head;
+					firstHead = firstHead.next;
+				}
+			}
+			else {
+				if (second == null ) {
+					second = head;
+					secondHead = second;
+				}
+				else {
+					secondHead.next = head;
+					secondHead = secondHead.next;
+				}
+			}
+			head = head.next;
+		}
+		
+		if (first!=null) {
+			firstHead.next = second;
+			if (second != null) {
+				secondHead.next = null;
+			}
+			return first;
+		}
+		else {
+			if (second != null) {
+				secondHead.next = null;
+			}
+			return second;
+		}
 	}
 }
